@@ -284,12 +284,12 @@ class SliverPositioned extends ParentDataWidget<SliverStackParentData> {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DoubleProperty("left", left, defaultValue: null));
-    properties.add(DoubleProperty("top", top, defaultValue: null));
-    properties.add(DoubleProperty("right", right, defaultValue: null));
-    properties.add(DoubleProperty("bottom", bottom, defaultValue: null));
-    properties.add(DoubleProperty("width", width, defaultValue: null));
-    properties.add(DoubleProperty("height", height, defaultValue: null));
+    properties.add(DoubleProperty('left', left, defaultValue: null));
+    properties.add(DoubleProperty('top', top, defaultValue: null));
+    properties.add(DoubleProperty('right', right, defaultValue: null));
+    properties.add(DoubleProperty('bottom', bottom, defaultValue: null));
+    properties.add(DoubleProperty('width', width, defaultValue: null));
+    properties.add(DoubleProperty('height', height, defaultValue: null));
   }
 
   @override
