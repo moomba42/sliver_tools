@@ -188,8 +188,8 @@ class RenderSliverStack extends RenderSliver
       final parentData = child.parentData as SliverStackParentData;
       child.layout(constraints, parentUsesSize: true);
       assert(
-      child.geometry != null,
-      'Sliver child $child did not set its geometry',
+        child.geometry != null,
+        'Sliver child $child did not set its geometry',
       );
       final childGeometry = child.geometry!;
       if (childGeometry.scrollOffsetCorrection != null) {
