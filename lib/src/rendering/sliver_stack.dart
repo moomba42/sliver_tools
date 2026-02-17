@@ -60,25 +60,25 @@ class SliverStackParentData extends ParentData
   /// children in the stack.
   bool get isPositioned =>
       top != null ||
-          right != null ||
-          bottom != null ||
-          left != null ||
-          width != null ||
-          height != null;
+      right != null ||
+      bottom != null ||
+      left != null ||
+      width != null ||
+      height != null;
 
   @override
   String toString() {
     final List<String> values = <String>[
-      if (top != null) "top=${debugFormatDouble(top)}",
-      if (right != null) "right=${debugFormatDouble(right)}",
-      if (bottom != null) "bottom=${debugFormatDouble(bottom)}",
-      if (left != null) "left=${debugFormatDouble(left)}",
-      if (width != null) "width=${debugFormatDouble(width)}",
-      if (height != null) "height=${debugFormatDouble(height)}",
+      if (top != null) 'top=${debugFormatDouble(top)}',
+      if (right != null) 'right=${debugFormatDouble(right)}',
+      if (bottom != null) 'bottom=${debugFormatDouble(bottom)}',
+      if (left != null) 'left=${debugFormatDouble(left)}',
+      if (width != null) 'width=${debugFormatDouble(width)}',
+      if (height != null) 'height=${debugFormatDouble(height)}',
     ];
-    if (values.isEmpty) values.add("not positioned");
+    if (values.isEmpty) values.add('not positioned');
     values.add(super.toString());
-    return values.join("; ");
+    return values.join('; ');
   }
 
   _SimpleSliverStackParentData get _simpleStackParentData =>
@@ -189,7 +189,7 @@ class RenderSliverStack extends RenderSliver
       child.layout(constraints, parentUsesSize: true);
       assert(
       child.geometry != null,
-      "Sliver child $child did not set its geometry",
+      'Sliver child $child did not set its geometry',
       );
       final childGeometry = child.geometry!;
       if (childGeometry.scrollOffsetCorrection != null) {
@@ -257,19 +257,19 @@ class RenderSliverStack extends RenderSliver
 
     final size = constraints.axis == Axis.vertical
         ? Size(
-      constraints.crossAxisExtent,
-      max(geometry!.maxPaintExtent - overlapAndScroll,
-          geometry!.paintExtent - overlap),
-    )
+            constraints.crossAxisExtent,
+            max(geometry!.maxPaintExtent - overlapAndScroll,
+                geometry!.paintExtent - overlap),
+          )
         : Size(
-      max(geometry!.maxPaintExtent - overlapAndScroll,
-          geometry!.paintExtent - overlap),
-      constraints.crossAxisExtent,
-    );
+            max(geometry!.maxPaintExtent - overlapAndScroll,
+                geometry!.paintExtent - overlap),
+            constraints.crossAxisExtent,
+          );
     for (final child in _children.whereType<RenderBox>()) {
       final parentData = child.parentData as SliverStackParentData;
       assert(parentData.isPositioned,
-      "All non sliver children of SliverStack should be positioned");
+          'All non sliver children of SliverStack should be positioned');
       if (!parentData.isPositioned) return;
       child.parentData = parentData._simpleStackParentData;
       final overflows = RenderStack.layoutPositionedChild(
@@ -364,17 +364,17 @@ class RenderSliverStack extends RenderSliver
 
   @override
   bool hitTestChildren(
-      SliverHitTestResult result, {
-        required double mainAxisPosition,
-        required double crossAxisPosition,
-      }) {
+    SliverHitTestResult result, {
+    required double mainAxisPosition,
+    required double crossAxisPosition,
+  }) {
     final boxResult = BoxHitTestResult.wrap(result);
     for (final child in _childrenInHitTestOrder) {
       if (child is RenderSliver && child.geometry!.visible) {
         final hit = child.hitTest(
           result,
           mainAxisPosition:
-          _computeChildMainAxisPosition(child, mainAxisPosition),
+              _computeChildMainAxisPosition(child, mainAxisPosition),
           crossAxisPosition: crossAxisPosition,
         );
         if (hit) return true;
